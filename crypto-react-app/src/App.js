@@ -9,6 +9,7 @@ import Axios from 'axios'
 import { muiTheme } from './Styles'
 import { ProgressWaiter } from './ProgressWaiter'
 import { ReferenceComponent } from './ReferenceComponent'
+import { readPoloniexApi } from './ReadPoloniexApi'
 
 const poloniexUrl = 'https://poloniex.com/public?command=returnTicker'
 
@@ -41,44 +42,14 @@ class App extends Component {
   }
 
   updateResults() {
-    var fromCoin = this.state.fromCoin
-    var toCoin = this.state.toCoin
-    var value = this.state.value
-    if (toCoin !== "" && fromCoin !== "" && value !== "" && this.state.responseLoaded === true) { // check if the inputs are valid
-      var poloResponse = this.state.poloniexResponse
-      if (fromCoin === "USD") fromCoin = "USDT"
-      if (toCoin === "USD") toCoin = "USDT"
-      var price = poloResponse[toCoin + "_" + fromCoin]
-      if (price !== null) { // check if there is a direct conversion
-        this.setState({
-          newVal: price.last * value
-        })
-      } else { // try with inverse conversion
-        price = poloResponse[fromCoin + "_" + toCoin]
-        if (price !== null) {
-          this.setState({
-            newVal: 1 / price.last
-          })
-        } else { // convert through BTC
-          var priceFromBtc = poloResponse["BTC_" + fromCoin]
-          var priceToBtc = poloResponse["BTC_" + toCoin]
-          if (priceFromBtc !== null && priceToBtc !== null) {
-            var fromBtc = priceFromBtc.last
-            var toBtc = priceToBtc.last
-
-            this.setState({
-              newVal: fromBtc / toBtc
-            })
-          } else {
-            this.setState({
-              newVal: "Poloniex does not contain data"
-            })
-          }
-        }
-      }
-    } else {
+    if (this.state.responseLoaded) {
       this.setState({
-        newVal: null
+        newVal: readPoloniexApi({
+                  toCoin: this.state.toCoin,
+                  fromCoin: this.state.fromCoin,
+                  value: this.state.value,
+                  poloniexResponse: this.state.poloniexResponse
+                })
       })
     }
   }
