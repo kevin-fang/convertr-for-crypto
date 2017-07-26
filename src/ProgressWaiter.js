@@ -3,10 +3,10 @@ import CircularProgress from 'material-ui/CircularProgress'
 
 export const ProgressWaiter = (props) => {
   return (
-    <div style={{marginLeft: 48}}>
-        <div className="rowC">
-          <p>Loading...</p>
-          <CircularProgress style={{marginLeft: 16}}/>
+    <div>
+        <div style={{display: 'flex', flex: 'row'}}>
+          {props.loaded ? <p style={{color: "#ffffff"}}>Poloniex data is loaded</p> 
+          	: <CircularProgress style={{marginRight: 8}}/>}
         </div>
     </div>
   )
