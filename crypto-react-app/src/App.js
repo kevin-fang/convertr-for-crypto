@@ -29,16 +29,24 @@ class App extends Component {
     }
     this.updateResults = this.updateResults.bind(this)
     this.handleReverseClick = this.handleReverseClick.bind(this)
+    this.fetchData = this.fetchData.bind(this)
   }
 
+  async fetchData() {
+      try {
+        this.setState({
+          responseLoaded: false
+        })
+        const response = await Axios.get(poloniexUrl)
+        const data = response.data
+        this.setState({poloniexResponse: data, responseLoaded: true})
+        this.updateResults()
+      } catch (error) {
+        alert("Error in retrieving Poloniex data: " + error)
+      }
+  }
   async componentDidMount() {
-    try {
-      const response = await Axios.get(poloniexUrl)
-      const data = response.data
-      this.setState({poloniexResponse: data, responseLoaded: true})
-    } catch (error) {
-      alert("Error in retrieving Poloniex data: " + error)
-    }
+    await this.fetchData()
   }
 
   updateResults() {
@@ -74,7 +82,8 @@ class App extends Component {
               handleReverseClick={this.handleReverseClick}/>
             <ResultsDisplay
               fromValue={this.state.value} fromCoin={this.state.fromCoin}
-              toValue={this.state.newVal} toCoin={this.state.toCoin}/>
+              toValue={this.state.newVal} toCoin={this.state.toCoin}
+              refresh={this.fetchData}/>
           </div>
           <ProgressWaiter loaded={this.state.responseLoaded} />
           <ReferenceComponent />

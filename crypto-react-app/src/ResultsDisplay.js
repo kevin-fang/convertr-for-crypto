@@ -1,5 +1,6 @@
 import React from 'react'
-import {Card, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardTitle, CardText, CardActions} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton'
 
 export class ResultsDisplay extends React.Component {
 
@@ -21,7 +22,10 @@ export class ResultsDisplay extends React.Component {
           <div style={{fontSize: 16}}>
             {this.props.toValue}
           </div><br/>
-        </CardText>
+      </CardText> <br/><br/><br/><br/>
+        <CardActions style={{margin:0}}>
+          <FlatButton label="Refresh data" onTouchTap={this.props.refresh}/>
+        </CardActions>
       </Card>
     )
   }
