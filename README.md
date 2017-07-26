@@ -1,3 +1,3 @@
-# Crypto Calculator
+# Convertr by Kevin Fang
 
-To start the React app, run `npm i && npm start`
+A React application that converts cryptocurrencies. To run, `npm i && npm start`. Available at https://kevin-fang.github.io
