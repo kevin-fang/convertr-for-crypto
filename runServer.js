@@ -1,6 +1,7 @@
 var express = require('express')
 var app = express()
 var request = require('request')
+var cors = require('cors')
 
 var poloUrl = "https://poloniex.com/public?command=returnTicker"
 
@@ -13,6 +14,7 @@ function getAltPriceFromBTC(from, to, coinPrices, callback) {
 	}
 }
 
+app.use(cors())
 app.get('/crypto', (req, res) => {
 	var from = req.query.from.toUpperCase()
 	if (from === "USD") from = "USDT"
@@ -23,7 +25,7 @@ app.get('/crypto', (req, res) => {
 	var amt = Number(req.query.amt)
 
 	console.log("from:" + from + ", to:" + to + ", amt:" + amt)
-	
+
 	res.setHeader('Content-Type', 'text/html')
 
 	request({
@@ -37,7 +39,7 @@ app.get('/crypto', (req, res) => {
 				if (err == null) {
 					var convertedPrice = altPrice * amt
 					res.write("" + amt + " of " + from + " is currently worth: " + convertedPrice + " " + to)
-				} else {	
+				} else {
 					console.log(err)
 					res.write("Error: " + err)
 				}

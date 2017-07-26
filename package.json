@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/kevin-fang/crypto-calc#readme",
   "dependencies": {
+    "cors": "^2.8.4",
     "express": "^4.15.3",
     "request": "^2.81.0"
   }

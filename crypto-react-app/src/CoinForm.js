@@ -24,8 +24,6 @@ export class CoinForm extends React.Component {
     }, () => this.props.handleReverseClick())
   }
 
-
-
   handleFromCoinChange(e, newVal) {
     this.setState({fromCoin: e.target.value})
     this.props.handleFromCoinChange(newVal)
