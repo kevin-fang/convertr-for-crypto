@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CoinForm } from './Form'
+import { CoinForm } from './CoinForm'
 import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin'
@@ -74,7 +74,8 @@ class App extends Component {
 	        	title="Crypto Converter"
 						style={{ margin: 0 }}
 	        	showMenuIconButton={false}/>
-          <div className="rowC">
+          {this.state.responseLoaded === false ? <ProgressWaiter loaded={this.state.responseLoaded} /> : null }
+          <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
             <CoinForm
               handleFromCoinChange={(newVal) => this.setState({fromCoin: newVal.toUpperCase()}, () => this.updateResults())}
               handleToCoinChange={(newVal) => this.setState({toCoin: newVal.toUpperCase()}, () => this.updateResults())}
@@ -84,10 +85,8 @@ class App extends Component {
               fromValue={this.state.value} fromCoin={this.state.fromCoin}
               toValue={this.state.newVal} toCoin={this.state.toCoin}
               refresh={this.fetchData}/>
-          </div>
-          <ProgressWaiter loaded={this.state.responseLoaded} />
-          <ReferenceComponent />
-
+            <ReferenceComponent />
+        </div>
         </div>
       </MuiThemeProvider>
     );

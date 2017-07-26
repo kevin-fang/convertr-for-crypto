@@ -1,6 +1,6 @@
 import React from 'react'
 import {Card, CardTitle, CardText, CardActions} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton'
+import FlatButton from 'material-ui/FlatButton';
 
 export class ResultsDisplay extends React.Component {
 
