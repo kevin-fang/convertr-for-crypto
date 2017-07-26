@@ -16,6 +16,7 @@ export class CoinForm extends React.Component {
     }
   }
 
+  // reverse text and call the reverseClick prop.
   handleReverseClick() {
     var fromCoin = this.state.fromCoin;
     var toCoin = this.state.toCoin;
@@ -25,11 +26,11 @@ export class CoinForm extends React.Component {
     }, () => this.props.handleReverseClick())
   }
 
+  // handle coin changes by setting state and calling the handler
   handleFromCoinChange(e, newVal) {
     this.setState({fromCoin: e.target.value})
     this.props.handleFromCoinChange(newVal)
   }
-
   handleToCoinChange(e, newVal) {
     this.setState({toCoin: e.target.value})
     this.props.handleToCoinChange(newVal)

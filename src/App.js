@@ -35,6 +35,7 @@ class App extends Component {
     this.fetchData = this.fetchData.bind(this)
   }
 
+  // read the ticker from Poloniex
   async fetchData() {
       try {
         this.setState({
@@ -53,6 +54,7 @@ class App extends Component {
     await this.fetchData()
   }
 
+  // update results basd on poloniex Api
   updateResults() {
     if (this.state.responseLoaded) {
       var ApiResponse = readPoloniexApi({
@@ -68,9 +70,12 @@ class App extends Component {
     }
   }
 
+  // reverse the from and tocoins
   handleReverseClick() {
-    this.setState({fromCoin: this.state.toCoin, toCoin: this.state.fromCoin}, () => this.updateResults())
+    this.setState({fromCoin: this.state.toCoin, toCoin: this.state.fromCoin}, 
+      () => this.updateResults())
   }
+  
   render() {
     const loader = <ProgressWaiter loaded={this.state.responseLoaded}/>
     return (
