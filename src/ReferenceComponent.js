@@ -11,7 +11,7 @@ export const ReferenceComponent = () => {
         <b>LiteCoin:</b> LTC<br/>
         <b>US Dollar/Tether:</b> USD<br/>
         <p>This application calls the Poloniex API and downloads the ticker<br/> when the page opens or whenever the refresh button is clicked.</p>
-        <p style={{fontSize: 12}}>Created by Kevin Fang. https://github.com/kevin-fang/crypto-calc/tree/master/crypto-react-app/</p>
+        <p style={{fontSize: 12}}>Created by Kevin Fang. https://github.com/kevin-fang/crypto-calc/</p>
       </CardText>
     </Card>
   )
