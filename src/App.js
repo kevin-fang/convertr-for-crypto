@@ -26,6 +26,7 @@ class App extends Component {
       toCoin: "",
       value: "",
       newVal: null,
+      unitPrice: null,
       poloniexResponse: null,
       responseLoaded: false
     }
@@ -54,13 +55,15 @@ class App extends Component {
 
   updateResults() {
     if (this.state.responseLoaded) {
-      this.setState({
-        newVal: readPoloniexApi({
+      var ApiResponse = readPoloniexApi({
                   toCoin: this.state.toCoin,
                   fromCoin: this.state.fromCoin,
                   value: this.state.value,
                   poloniexResponse: this.state.poloniexResponse
                 })
+      this.setState({
+        newVal: ApiResponse.price,
+        unitPrice: ApiResponse.unit
       })
     }
   }
@@ -80,7 +83,7 @@ class App extends Component {
             iconElementRight={loader}>
             </AppBar>
           <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
-          
+
             <FloatingActionButton style={fabStyle}
                 onTouchTap={this.fetchData}>
               <NavigationRefresh />
@@ -94,6 +97,7 @@ class App extends Component {
               responseLoaded={this.state.responseLoaded}
               fromValue={this.state.value} fromCoin={this.state.fromCoin}
               toValue={this.state.newVal} toCoin={this.state.toCoin}
+              unitPrice={this.state.unitPrice}
               refresh={this.fetchData}/>
             <ReferenceComponent />
           </div>

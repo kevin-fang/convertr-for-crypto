@@ -2,6 +2,7 @@ import React from 'react'
 import TextField from 'material-ui/TextField'
 import Paper from 'material-ui/Paper'
 import FlatButton from 'material-ui/FlatButton'
+import ActionSwapVert from 'material-ui/svg-icons/action/swap-vert'
 
 export class CoinForm extends React.Component {
   constructor(props) {
@@ -37,14 +38,16 @@ export class CoinForm extends React.Component {
   render() {
     return (
       <Paper style={{margin:24, padding: 8}}>
-        <p style={{fontSize: 24, margin: 8}}>Input Conversion Values</p>
+        <p style={{fontSize: 20, margin: 8}}>Input Conversion Values</p>
         <div style={{margin: 8}}>
           <TextField
             floatingLabelText="From"
             value={this.state.fromCoin}
             onChange={this.handleFromCoinChange}/><br/>
-          <FlatButton label="Reverse" secondary={true}
-            onClick={this.handleReverseClick}/><br/>
+          <FlatButton secondary={true}
+            style={{display: 'flex', alignItems: 'center', width: "100%"}}
+            icon={<ActionSwapVert />}
+            onClick={this.handleReverseClick}/>
           <TextField
             floatingLabelText="To"
             value={this.state.toCoin}
