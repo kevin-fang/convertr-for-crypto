@@ -2,7 +2,7 @@
   "name": "crypto-react-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://kevin-fang.github.io/",
+  "homepage": "https://kevin-fang.github.io/crypto-calc",
   "dependencies": {
     "autoprefixer": "7.1.1",
     "axios": "^0.16.2",

@@ -1,7 +1,7 @@
 import React from 'react'
 import CircularProgress from 'material-ui/CircularProgress'
 
-export const ProgressWaiter = (props) => {
+const ProgressWaiter = (props) => {
   return (
     <div>
         <div style={{display: 'flex', flex: 'row'}}>
@@ -11,3 +11,5 @@ export const ProgressWaiter = (props) => {
     </div>
   )
 }
+
+export default ProgressWaiter

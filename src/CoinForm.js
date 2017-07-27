@@ -3,6 +3,8 @@ import TextField from 'material-ui/TextField'
 import Paper from 'material-ui/Paper'
 import FlatButton from 'material-ui/FlatButton'
 import ActionSwapVert from 'material-ui/svg-icons/action/swap-vert'
+import AutoComplete from 'material-ui/AutoComplete'
+import CoinList from './CoinList'
 
 export class CoinForm extends React.Component {
   constructor(props) {
@@ -10,9 +12,14 @@ export class CoinForm extends React.Component {
     this.handleReverseClick = this.handleReverseClick.bind(this)
     this.handleFromCoinChange = this.handleFromCoinChange.bind(this)
     this.handleToCoinChange = this.handleToCoinChange.bind(this)
+    this.handleValueChange = this.handleValueChange.bind(this)
+    this.handleNewFromRequest = this.handleNewFromRequest.bind(this)
+    this.handleNewToRequest = this.handleNewToRequest.bind(this)
     this.state = {
       fromCoin: "",
-      toCoin: ""
+      toCoin: "",
+      value: null,
+      dataSource: CoinList
     }
   }
 
@@ -27,13 +34,37 @@ export class CoinForm extends React.Component {
   }
 
   // handle coin changes by setting state and calling the handler
-  handleFromCoinChange(e, newVal) {
-    this.setState({fromCoin: e.target.value})
-    this.props.handleFromCoinChange(newVal)
+  handleFromCoinChange(searchText, dataSource, params) {
+    this.setState({fromCoin: searchText})
+    this.props.handleFromCoinChange(searchText)
   }
-  handleToCoinChange(e, newVal) {
-    this.setState({toCoin: e.target.value})
-    this.props.handleToCoinChange(newVal)
+  handleToCoinChange(searchText, dataSource, params) {
+    this.setState({toCoin: searchText})
+    this.props.handleToCoinChange(searchText)
+  }
+
+  handleValueChange(e, newVal) {
+    this.props.handleValueChange(newVal)
+  }
+
+  handleNewFromRequest(chosenRequest, index) {
+    if (index !== -1) {
+      var newCoin = this.state.dataSource[index].value
+      this.setState({
+        fromCoin: newCoin
+      })
+      this.props.handleFromCoinChange(newCoin)
+    }
+  }
+
+  handleNewToRequest(chosenRequest, index) {
+    if (index !== -1) {
+      var newCoin = this.state.dataSource[index].value
+      this.setState({
+        toCoin: newCoin
+      })
+      this.props.handleToCoinChange(newCoin)
+    }
   }
 
   render() {
@@ -41,21 +72,30 @@ export class CoinForm extends React.Component {
       <Paper style={{margin:24, padding: 8}}>
         <p style={{fontSize: 20, margin: 8}}>Input Conversion Values</p>
         <div style={{margin: 8}}>
-          <TextField
+          <AutoComplete
             floatingLabelText="From"
             value={this.state.fromCoin}
-            onChange={this.handleFromCoinChange}/><br/>
+            filter={AutoComplete.caseInsensitiveFilter}
+            maxResults={5}
+            onNewRequest={this.handleNewFromRequest}
+            onUpdateInput={this.handleFromCoinChange}
+            dataSource={this.state.dataSource}/><br/>
           <FlatButton secondary={true}
-            style={{display: 'flex', alignItems: 'center', width: "100%"}}
+            style={{display: 'flex', alignItems: 'center'}}
             icon={<ActionSwapVert />}
+            label="Reverse"
             onClick={this.handleReverseClick}/>
-          <TextField
+          <AutoComplete
             floatingLabelText="To"
             value={this.state.toCoin}
-            onChange={this.handleToCoinChange}/> <br/>
+            filter={AutoComplete.caseInsensitiveFilter}
+            maxResults={5}
+            onNewRequest={this.handleNewToRequest}
+            dataSource={this.state.dataSource}
+            onUpdateInput={this.handleToCoinChange}/> <br/>
           <TextField
             floatingLabelText="Amount"
-            onChange={this.props.handleValueChange} />
+            onChange={this.handleValueChange} />
             <br/>
         </div>
       </Paper>

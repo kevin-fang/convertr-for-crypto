@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { CoinForm } from './CoinForm'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import injectTapEventPlugin from 'react-tap-event-plugin'
 import AppBar from 'material-ui/AppBar';
 import { ResultsDisplay } from './ResultsDisplay'
 import Axios from 'axios'
@@ -11,11 +10,9 @@ import { readPoloniexApi } from './ReadPoloniexApi'
 import NavigationRefresh from 'material-ui/svg-icons/navigation/refresh'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 
-import { ProgressWaiter } from './ProgressWaiter'
+import ProgressWaiter from './ProgressWaiter'
 
 const poloniexUrl = 'https://poloniex.com/public?command=returnTicker'
-
-injectTapEventPlugin();
 
 class App extends Component {
 
@@ -82,7 +79,7 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
 	        	<AppBar
-	        	title="Crypto Converter"
+	        	title="Convertr"
 						style={{ margin: 0 }}
 	        	showMenuIconButton={false}
             iconElementRight={loader}>
@@ -96,7 +93,7 @@ class App extends Component {
             <CoinForm
               handleFromCoinChange={(newVal) => this.setState({fromCoin: newVal.toUpperCase()}, () => this.updateResults())}
               handleToCoinChange={(newVal) => this.setState({toCoin: newVal.toUpperCase()}, () => this.updateResults())}
-              handleValueChange={(e, newVal) => this.setState({value: newVal}, () => this.updateResults())}
+              handleValueChange={(newVal) => this.setState({value: newVal}, () => this.updateResults())}
               handleReverseClick={this.handleReverseClick}/>
             <ResultsDisplay
               responseLoaded={this.state.responseLoaded}
