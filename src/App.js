@@ -49,7 +49,15 @@ class App extends Component {
 
   async componentDidMount() {
     await this.fetchData()
+
+    // refresh every five minutes
+    this.interval = setInterval(() => this.fetchData(), 300000)
   }
+
+  componentWillUnmount() {
+    clearInterval(this.interval)
+  }
+
 
   // update results basd on poloniex Api
   updateResults() {
