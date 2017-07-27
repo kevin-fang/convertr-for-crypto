@@ -49,7 +49,7 @@ export class CoinForm extends React.Component {
 
   handleNewFromRequest(chosenRequest, index) {
     if (index !== -1) {
-      var newCoin = chosenRequest
+      var newCoin = this.state.dataSource[index].value
       this.setState({
         fromCoin: newCoin
       })
@@ -59,7 +59,7 @@ export class CoinForm extends React.Component {
 
   handleNewToRequest(chosenRequest, index) {
     if (index !== -1) {
-      var newCoin = chosenRequest
+      var newCoin = this.state.dataSource[index].value
       this.setState({
         toCoin: newCoin
       })
