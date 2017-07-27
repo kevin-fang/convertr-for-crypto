@@ -49,7 +49,7 @@ export class CoinForm extends React.Component {
 
   handleNewFromRequest(chosenRequest, index) {
     if (index !== -1) {
-      var newCoin = this.state.dataSource[index].value
+      var newCoin = chosenRequest
       this.setState({
         fromCoin: newCoin
       })
@@ -59,7 +59,7 @@ export class CoinForm extends React.Component {
 
   handleNewToRequest(chosenRequest, index) {
     if (index !== -1) {
-      var newCoin = this.state.dataSource[index].value
+      var newCoin = chosenRequest
       this.setState({
         toCoin: newCoin
       })
@@ -74,7 +74,7 @@ export class CoinForm extends React.Component {
         <div style={{margin: 8}}>
           <AutoComplete
             floatingLabelText="From"
-            value={this.state.fromCoin}
+            searchText={this.state.fromCoin}
             filter={AutoComplete.caseInsensitiveFilter}
             maxResults={5}
             onNewRequest={this.handleNewFromRequest}
@@ -87,7 +87,7 @@ export class CoinForm extends React.Component {
             onClick={this.handleReverseClick}/>
           <AutoComplete
             floatingLabelText="To"
-            value={this.state.toCoin}
+            searchText={this.state.toCoin}
             filter={AutoComplete.caseInsensitiveFilter}
             maxResults={5}
             onNewRequest={this.handleNewToRequest}

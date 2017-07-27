@@ -77,21 +77,20 @@ class App extends Component {
 
   // reverse the from and tocoins
   handleReverseClick() {
-    this.setState({fromCoin: this.state.toCoin, toCoin: this.state.fromCoin}, 
+    this.setState({fromCoin: this.state.toCoin, toCoin: this.state.fromCoin},
       () => this.updateResults())
   }
-  
+
   render() {
     const loader = <ProgressWaiter loaded={this.state.responseLoaded}/>
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
 	        	<AppBar
-	        	title="Convertr"
-						style={{ margin: 0 }}
-	        	showMenuIconButton={false}
-            iconElementRight={loader}>
-            </AppBar>
+  	        	title="Convertr"
+  						style={{ margin: 0 }}
+  	        	showMenuIconButton={false}
+              iconElementRight={loader} />
           <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
 
             <FloatingActionButton style={fabStyle}
