@@ -86,11 +86,11 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-	        	<AppBar
-  	        	title="Convertr"
-  						style={{ margin: 0 }}
-  	        	showMenuIconButton={false}
-              iconElementRight={loader} />
+          <AppBar
+            title="Convertr"
+            style={{ margin: 0 }}
+            showMenuIconButton={false}
+            iconElementRight={loader} />
           <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
 
             <FloatingActionButton style={fabStyle}
