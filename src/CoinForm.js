@@ -76,7 +76,6 @@ export class CoinForm extends React.Component {
             floatingLabelText="From"
             searchText={this.state.fromCoin}
             filter={AutoComplete.caseInsensitiveFilter}
-            maxResults={5}
             onNewRequest={this.handleNewFromRequest}
             onUpdateInput={this.handleFromCoinChange}
             dataSource={this.state.dataSource}/><br/>
@@ -89,7 +88,6 @@ export class CoinForm extends React.Component {
             floatingLabelText="To"
             searchText={this.state.toCoin}
             filter={AutoComplete.caseInsensitiveFilter}
-            maxResults={5}
             onNewRequest={this.handleNewToRequest}
             dataSource={this.state.dataSource}
             onUpdateInput={this.handleToCoinChange}/> <br/>

@@ -9,8 +9,9 @@ import { ReferenceComponent } from './ReferenceComponent'
 import { readPoloniexApi } from './ReadPoloniexApi'
 import NavigationRefresh from 'material-ui/svg-icons/navigation/refresh'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
-
 import ProgressWaiter from './ProgressWaiter'
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 const poloniexUrl = 'https://poloniex.com/public?command=returnTicker'
 
@@ -92,8 +93,8 @@ class App extends Component {
             showMenuIconButton={false}
             iconElementRight={loader} />
           <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
-
-            <FloatingActionButton style={fabStyle}
+            <FloatingActionButton
+                style={fabStyle}
                 onTouchTap={this.fetchData}>
               <NavigationRefresh />
             </FloatingActionButton>
