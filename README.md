@@ -1,4 +1,4 @@
-# Convertr by Kevin Fang
+# Convertr
 [![Build Status](https://travis-ci.org/kevin-fang/crypto-calc.svg?branch=master)](https://travis-ci.org/kevin-fang/crypto-calc)
 
 
