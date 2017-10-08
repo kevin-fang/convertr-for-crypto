@@ -1,8 +1,8 @@
 # Convertr for Crypto
-[![Build Status](https://travis-ci.org/kevin-fang/crypto-calc.svg?branch=master)](https://travis-ci.org/kevin-fang/crypto-calc)
+[![Build Status](https://travis-ci.org/kevin-fang/crypto-calc.svg?branch=master)](https://travis-ci.org/kevin-fang/convertr-for-crypto)
 
 Web application to convert between cryptocurrencies and fiat, based on the Poloniex API. Available at https://kevin-fang.github.io/crypto-calc.
 
-If a direct price conversion is available, the application uses that (BTC -> ETH = BTC/ETH). Otherwise, it tries to convert through the inverse (ETH -> BTC = 1/BTC/ETH). Otherwise, it converts through Bitcoin. (ETH -> USD = ETH/BTC * BTC/USD).
+If a direct price conversion is available, the application uses that (BTC -> ETH = BTC/ETH). If this is not available, it tries to convert through the inverse (ETH -> BTC = 1/BTC/ETH). As a lst resort, it converts through Bitcoin. (ETH -> USD = ETH/BTC * BTC/USD).
 
 To run for yourself, run the following command: `npm i && npm start`.
