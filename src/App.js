@@ -88,7 +88,7 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <AppBar
-            title="Convertr"
+            title="Convertr for Crypto"
             style={{ margin: 0 }}
             showMenuIconButton={false}
             iconElementRight={loader} />
