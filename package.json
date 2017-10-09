@@ -1,8 +1,8 @@
 {
-  "name": "crypto-react-app",
+  "name": "convertr-for-crypto",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://kevin-fang.github.io/crypto-calc",
+  "homepage": "https://kevin-fang.github.io/convertr-for-crypto",
   "dependencies": {
     "autoprefixer": "7.1.1",
     "axios": "^0.16.2",
